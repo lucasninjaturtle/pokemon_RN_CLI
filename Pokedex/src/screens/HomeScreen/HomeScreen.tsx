@@ -10,6 +10,8 @@ import PokemonCard from '../../components/PokemonCard';
 //images
 const pokebola = require('../../assets/pokebola.png');
 
+
+
 const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
   const {simplePokemonList, loadPokemons} = usePokemonPaginated();

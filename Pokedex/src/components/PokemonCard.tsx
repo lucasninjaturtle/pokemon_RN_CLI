@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces';
 import { FadeInImage } from './FadeInImage';
 import ImageColors from "react-native-image-colors"
+import PokemonScreen from '../screens/PokemonScreen.tsx/PokemonScreen';
+import { useNavigation } from '@react-navigation/native';
 
 
 // SIMENSIONS
@@ -20,6 +22,7 @@ const PokemonCard = ({pokemon}: Props) => {
 
     const [bgColor, setBgColor] = useState('grey')
     const isMounted = useRef(true)
+    const navigation = useNavigation()
     
     useEffect( () => {
         
@@ -27,7 +30,7 @@ const PokemonCard = ({pokemon}: Props) => {
         .then( (colors: { platform: string; dominant: any; background: any; }) =>{
 
                 if (!isMounted.current) return;
-                
+
             if (colors.platform === "android") {
                 setBgColor(colors.dominant || 'grey')
               } else {
@@ -39,6 +42,10 @@ const PokemonCard = ({pokemon}: Props) => {
     return (
         <TouchableOpacity
         activeOpacity={ 0.9}
+        onPress={()=>navigation.navigate('PokemonScreen', {
+            simplePokemon: pokemon,
+            color:bgColor
+        })}
         >
             <View 
             style={{
