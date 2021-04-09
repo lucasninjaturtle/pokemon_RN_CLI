@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces';
 import { FadeInImage } from './FadeInImage';
+import ImageColors from "react-native-image-colors"
 
 
 // SIMENSIONS
@@ -18,7 +19,22 @@ const PokemonCard = ({pokemon}: Props) => {
     // POKECARD COLOR
 
     const [bgColor, setBgColor] = useState('grey')
+    const isMounted = useRef(true)
+    
+    useEffect( () => {
+        
+        ImageColors.getColors(pokemon.picture, { fallback: 'grey'})
+        .then( (colors: { platform: string; dominant: any; background: any; }) =>{
 
+                if (!isMounted.current) return;
+                
+            if (colors.platform === "android") {
+                setBgColor(colors.dominant || 'grey')
+              } else {
+                setBgColor(colors.background || 'grey')
+              }
+        })
+    }, [])
 
     return (
         <TouchableOpacity
@@ -65,7 +81,7 @@ const styles = StyleSheet.create({
         width: 160,
         borderRadius:10,
         marginBottom:25,
-        shadowColor: "#000",
+        shadowColor: "#000fff",
         shadowOffset: {
             width: 0,
             height: 6,
@@ -83,6 +99,8 @@ const styles = StyleSheet.create({
         left: 10,
     },
     pokebolaContainer:{
+        width: 100,
+        height: 100,
         position: 'absolute',
         bottom:0,
         right:0,
