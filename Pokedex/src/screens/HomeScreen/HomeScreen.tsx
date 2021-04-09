@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, Image, Text} from 'react-native';
+import {ActivityIndicator, Image, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from '../../theme/appTheme';
@@ -18,17 +18,23 @@ const HomeScreen = () => {
     <>
       <Image source={pokebola} style={styles.pokebolaBG} />
 
+
+      <View
+      style={{
+        ...styles.globalMargin,
+        alignItems:'center'
+      }}
+      >
       <FlatList
         data={simplePokemonList}
         keyExtractor={pokemon => pokemon.id}
         showsVerticalScrollIndicator={false}
         numColumns={2}
-
         //HEADER
         ListHeaderComponent={
           <Text
-            style={{...styles.title, ...styles.globalMargin, top: top + 20, marginBottom: top + 20}}>
-            POKEDEX HOME SCREEN
+            style={{...styles.title, ...styles.globalMargin, top: top + 20, marginBottom: top + 30}}>
+            Pokedex
           </Text>
         }
         renderItem={({item}) => <PokemonCard pokemon={item} />}
@@ -36,11 +42,12 @@ const HomeScreen = () => {
         onEndReached={loadPokemons}
         onEndReachedThreshold={0.4}
         //Inifinite Scroll - End
-
         ListFooterComponent={
           <ActivityIndicator style={{height: 100}} size={30} color="grey" />
         }
       />
+      </View>
+      
     </>
   );
 };
