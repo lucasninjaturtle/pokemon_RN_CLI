@@ -3,6 +3,7 @@ import { Image, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { styles } from '../../theme/appTheme'
+import usePokemonPaginated from '../../hooks/usePokemonPaginated';
 //images
 const pokebola = require('../../assets/pokebola.png') 
 
@@ -10,6 +11,7 @@ const pokebola = require('../../assets/pokebola.png')
 const HomeScreen = () => {
 
   const { top } = useSafeAreaInsets()
+  usePokemonPaginated()
   
     return (
         <>
