@@ -11,3 +11,12 @@ export interface Result {
     name: string;
     url:  string;
 }
+
+
+// THIS INTERFACE IS CREATED SO I CAN ACCES INDIVIDUALY MY POKEMONS
+export interface SimplePokemon {
+    id: string;
+    name: string;
+    picture:  string;
+    color?:string;
+}
