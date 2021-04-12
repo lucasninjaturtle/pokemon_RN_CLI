@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
-import { useEffect } from 'react';
 
 interface Props {
+    onDebounce: (value : any) => void;
     style?: StyleProp<ViewStyle>
 }
 
-export default function SearchInput({style}:Props) {
+
+export const SearchInput = ({style, onDebounce}:Props) => {
 
     const [textValue, setTextValue] = useState('')
 
-    const debouncedValue = useDebouncedValue(textValue, 1500)
+    let debounceValue = useDebouncedValue(textValue, 1500)
 
     useEffect(() => {
-        console.log(debouncedValue)
+        onDebounce(debounceValue);
+        // console.log(debounceValue)
         
-    }, [debouncedValue])
+    }, [debounceValue])
 
     return (
         <View style={{...styles.container,

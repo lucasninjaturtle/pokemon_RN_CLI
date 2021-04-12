@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
-import { View, Text } from 'react-native'
 
-export const useDebouncedValue = (input: string = '', time: number = 500)=> {
+export const useDebouncedValue = (input: any = '', time: number = 500)=> {
     
     const [debouncedValue, setDebouncedValue] = useState(input)
 
@@ -15,7 +14,6 @@ export const useDebouncedValue = (input: string = '', time: number = 500)=> {
             clearTimeout(timeout)
         }
     }, [input])
-    return {
-        debouncedValue
-    }
+    return debouncedValue;
+    
 }
