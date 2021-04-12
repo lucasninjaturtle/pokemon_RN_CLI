@@ -27,7 +27,7 @@ const mapPokemonList = (pokemonList: Result[])=>{
 
         return {id, picture, name};
     })
-    setSimplePokemonList(simplePokemonList)
+    setSimplePokemonList(newPokemonList)
     setFetching(false)
 }
 

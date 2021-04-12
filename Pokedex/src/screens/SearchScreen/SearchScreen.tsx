@@ -1,6 +1,7 @@
 import React from 'react'
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Loading from '../../components/Loading';
 import PokemonCard from '../../components/PokemonCard';
 import SearchInput from '../../components/SearchInput';
 import usePokemonSearch from '../../hooks/usePokemonSearch';
@@ -15,20 +16,13 @@ const {top} = useSafeAreaInsets();
 
 if( fetching ) {
     return(
-        <View style={styles.loadingContainer}>
-            <ActivityIndicator
-                size={50}
-                color='grey'
-            />
-            <Text>
-                Loading...
-            </Text>
-        </View>
+        <Loading/>
     )
 }
 
     return (
-        <SafeAreaView style={{flex:1, marginHorizontal: 20, backgroundColor:'red'}}>
+        <SafeAreaView style={{flex:1, marginHorizontal: 20,
+         }}>
             <SearchInput/>
             <FlatList
         data={simplePokemonList}
@@ -47,9 +41,6 @@ if( fetching ) {
         }
         renderItem={({item}) => <PokemonCard pokemon={item} />}
       />
-      <Text>
-          HOLA
-      </Text>
         </SafeAreaView>
     )
 }
