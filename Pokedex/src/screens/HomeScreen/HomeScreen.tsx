@@ -3,9 +3,9 @@ import {ActivityIndicator, Image, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from '../../theme/appTheme';
-import usePokemonPaginated from '../../hooks/usePokemonPaginated';
 import {FlatList} from 'react-native-gesture-handler';
 import PokemonCard from '../../components/PokemonCard';
+import usePokemonPaginated from '../../hooks/usePokemonPaginated';
 
 //images
 const pokebola = require('../../assets/pokebola.png');
