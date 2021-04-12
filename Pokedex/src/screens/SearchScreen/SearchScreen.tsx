@@ -4,12 +4,11 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function SearchScreen() {
     return (
         <View>
-            <Text></Text>
+            <Text>
+                
+            </Text>
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-
-    
-})
+const styles = StyleSheet.create({})
